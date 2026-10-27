@@ -873,7 +873,7 @@ export function WeddingInvitation() {
             </div>
           </section>
 
-          <section className="gallery-section paper-section torn-section">
+          {/* <section className="gallery-section paper-section torn-section">
             <TornEdgeTop color="#641d2d" />
             <div data-reveal>
               <p className="eyebrow">Through our eyes</p>
@@ -897,7 +897,39 @@ export function WeddingInvitation() {
               ))}
             </div>
             <TornEdgeBottom color="#641d2d" />
-          </section>
+          </section> */}
+
+          <section className="polaroid-section">
+  <div data-reveal>
+    <p className="eyebrow">Little pieces of us</p>
+    <h2>Polaroid memories</h2>
+  </div>
+
+  <div className="polaroids">
+    {[slide2, laughImage, slide7].map((src, index) => (
+      <figure key={src}>
+        <img
+          src={src}
+          alt={[
+            "A walk to remember",
+            "The laugh we love",
+            "A promise in gold",
+          ][index]}
+          width={500}
+          height={600}
+          loading="lazy"
+        />
+        <figcaption>
+          {[
+            "the long way home",
+            "always laughing",
+            "the promise",
+          ][index]}
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>
 
           <section
             id="events"
