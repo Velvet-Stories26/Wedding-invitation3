@@ -31,7 +31,7 @@ import letterOpenImage from "@/assets/letter-open.png";
 import musicFile from "@/assets/music.mp3";
 
 import slide1 from "@/assets/slide1.png";
-import slide2 from "@/assets/slide2.png";
+import slide2 from "@/assets/slide2.jpeg";
 import slide3 from "@/assets/slide3.png";
 import slide4 from "@/assets/slide4.png";
 import slide5 from "@/assets/slide5.png";
@@ -107,12 +107,12 @@ function ScratchBox({
       canvas.height = Math.floor(rect.height * ratio);
       ctx.scale(ratio, ratio);
 
-      // ALWAYS render the rich olive green gradient shade immediately
+      // ALWAYS render the rich burgundy gradient shade immediately
       // This guarantees the real values are 100% hidden even before images finish loading
       const gradient = ctx.createLinearGradient(0, 0, rect.width, rect.height);
-      gradient.addColorStop(0, "#233d25");
-      gradient.addColorStop(0.5, "#172b18");
-      gradient.addColorStop(1, "#0d1b0f");
+      gradient.addColorStop(0, "#8a3345");
+      gradient.addColorStop(0.5, "#641d2d");
+      gradient.addColorStop(1, "#300914");
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, rect.width, rect.height);
 
@@ -258,29 +258,29 @@ function LeafSprigLeft() {
     >
       <path
         d="M18 52C18 52 14 38 6 28C1 21.5 2 12 10 14C12.5 14.6 15 17 18 20"
-        stroke="#12381e"
+        stroke="#641d2d"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
       <path
         d="M18 42C18 42 24 32 30 24C34 18.5 32 10 24 12C21.5 12.6 19.5 15 18 18"
-        stroke="#12381e"
+        stroke="#641d2d"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
       <path
         d="M18 28C18 28 12 18 8 10C5.5 5 9 1.5 14 3.5C16 4.3 17 6.5 18 9"
-        stroke="#12381e"
+        stroke="#641d2d"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
       <path
         d="M18 20C18 20 22 12 26 6C28.5 2.2 25.5-0.5 21 1C19.5 1.5 18.5 3.5 18 5.5"
-        stroke="#12381e"
+        stroke="#641d2d"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
-      <path d="M18 52V2" stroke="#12381e" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M18 52V2" stroke="#641d2d" strokeWidth="1.2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -299,34 +299,34 @@ function LeafSprigRight() {
     >
       <path
         d="M18 52C18 52 14 38 6 28C1 21.5 2 12 10 14C12.5 14.6 15 17 18 20"
-        stroke="#12381e"
+        stroke="#641d2d"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
       <path
         d="M18 42C18 42 24 32 30 24C34 18.5 32 10 24 12C21.5 12.6 19.5 15 18 18"
-        stroke="#12381e"
+        stroke="#641d2d"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
       <path
         d="M18 28C18 28 12 18 8 10C5.5 5 9 1.5 14 3.5C16 4.3 17 6.5 18 9"
-        stroke="#12381e"
+        stroke="#641d2d"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
       <path
         d="M18 20C18 20 22 12 26 6C28.5 2.2 25.5-0.5 21 1C19.5 1.5 18.5 3.5 18 5.5"
-        stroke="#12381e"
+        stroke="#641d2d"
         strokeWidth="1.5"
         strokeLinecap="round"
       />
-      <path d="M18 52V2" stroke="#12381e" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M18 52V2" stroke="#641d2d" strokeWidth="1.2" strokeLinecap="round" />
     </svg>
   );
 }
 
-function TornEdgeTop({ color = "#12381e" }: { color?: string }) {
+function TornEdgeTop({ color = "#641d2d" }: { color?: string }) {
   return (
     <svg
       className="torn-edge torn-edge-top"
@@ -344,7 +344,7 @@ function TornEdgeTop({ color = "#12381e" }: { color?: string }) {
   );
 }
 
-function TornEdgeBottom({ color = "#12381e" }: { color?: string }) {
+function TornEdgeBottom({ color = "#641d2d" }: { color?: string }) {
   return (
     <svg
       className="torn-edge torn-edge-bottom"
@@ -367,7 +367,7 @@ function FloralMark() {
   return (
     <div className="floral-mark" aria-hidden="true">
       <span />
-      <Heart size={14} fill="#12381e" color="#12381e" />
+      <Heart size={14} fill="#641d2d" color="#641d2d" />
       <span />
     </div>
   );
@@ -809,7 +809,7 @@ export function WeddingInvitation() {
           </section>
 
           <section className="countdown-section paper-section torn-section" data-reveal>
-            <TornEdgeTop color="#22442c" />
+            <TornEdgeTop color="#641d2d" />
             <p className="eyebrow">TILL OUR BIG DAY</p>
             <h2>Countdown</h2>
             <div
@@ -833,7 +833,7 @@ export function WeddingInvitation() {
               </div>
               <LeafSprigRight />
             </div>
-            <TornEdgeBottom color="#22442c" />
+            <TornEdgeBottom color="#641d2d" />
           </section>
           <section
             id="memories"
@@ -874,7 +874,7 @@ export function WeddingInvitation() {
           </section>
 
           <section className="gallery-section paper-section torn-section">
-            <TornEdgeTop color="#22442c" />
+            <TornEdgeTop color="#641d2d" />
             <div data-reveal>
               <p className="eyebrow">Through our eyes</p>
               <h2>A Love We Imagine</h2>
@@ -896,15 +896,15 @@ export function WeddingInvitation() {
                 </button>
               ))}
             </div>
-            <TornEdgeBottom color="#22442c" />
+            <TornEdgeBottom color="#641d2d" />
           </section>
 
           <section
             id="events"
             className="events-section paper-section torn-section wedding-details-section"
           >
-            <TornEdgeTop color="#22442c" />
-            <TornEdgeBottom color="#22442c" />
+            <TornEdgeTop color="#641d2d" />
+            <TornEdgeBottom color="#641d2d" />
             <div className="wedding-details-content">
               <div className="wedding-details-heading" data-reveal>
                 <p className="eyebrow">With joyful hearts</p>
@@ -966,8 +966,8 @@ export function WeddingInvitation() {
           </section>
 
           <section className={`letter-section torn-section ${letterOpen ? "is-open" : ""}`}>
-            <TornEdgeTop color="#22442c" />
-            <TornEdgeBottom color="#22442c" />
+            <TornEdgeTop color="#641d2d" />
+            <TornEdgeBottom color="#641d2d" />
             <div className="letter-header" data-reveal>
               <p className="eyebrow">A little note for you</p>
               <h2>Words From Our Hearts</h2>

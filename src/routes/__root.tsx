@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Forever Begins - J. Sebastian Rajesh & C.T. Christia Wedding" },
       { property: "og:description", content: "Join us as we celebrate the beginning of forever." },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "theme-color", content: "#3d8659" },
+      { name: "theme-color", content: "#641d2d" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
