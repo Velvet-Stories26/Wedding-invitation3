@@ -79,7 +79,17 @@ function useCountdown() {
   return time;
 }
 
-function ScratchBox({ label, value, coverImage, onReveal }: { label: string; value: string; coverImage?: string; onReveal: () => void }) {
+function ScratchBox({
+  label,
+  value,
+  coverImage,
+  onReveal,
+}: {
+  label: string;
+  value: string;
+  coverImage?: string;
+  onReveal: () => void;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const hasRevealed = useRef(false);
   const hasUserScratched = useRef(false);
@@ -195,7 +205,7 @@ function ScratchBox({ label, value, coverImage, onReveal }: { label: string; val
       for (let i = 3; i < pixels.length; i += 32) {
         if (pixels[i] === 0) clear++;
       }
-      if (clear / totalCheck > 0.40) {
+      if (clear / totalCheck > 0.4) {
         hasRevealed.current = true;
         onReveal();
       }
@@ -216,7 +226,7 @@ function ScratchBox({ label, value, coverImage, onReveal }: { label: string; val
           event.preventDefault();
           try {
             event.currentTarget.setPointerCapture(event.pointerId);
-          } catch { }
+          } catch {}
           scratch(event.clientX, event.clientY);
         }}
         onPointerMove={(event) => {
@@ -228,7 +238,7 @@ function ScratchBox({ label, value, coverImage, onReveal }: { label: string; val
         onPointerUp={(event) => {
           try {
             event.currentTarget.releasePointerCapture(event.pointerId);
-          } catch { }
+          } catch {}
         }}
         style={{ touchAction: "none" }}
       />
@@ -238,11 +248,39 @@ function ScratchBox({ label, value, coverImage, onReveal }: { label: string; val
 
 function LeafSprigLeft() {
   return (
-    <svg className="botanical-leaf-svg left-leaf" width="36" height="54" viewBox="0 0 36 54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M18 52C18 52 14 38 6 28C1 21.5 2 12 10 14C12.5 14.6 15 17 18 20" stroke="#12381e" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M18 42C18 42 24 32 30 24C34 18.5 32 10 24 12C21.5 12.6 19.5 15 18 18" stroke="#12381e" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M18 28C18 28 12 18 8 10C5.5 5 9 1.5 14 3.5C16 4.3 17 6.5 18 9" stroke="#12381e" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M18 20C18 20 22 12 26 6C28.5 2.2 25.5-0.5 21 1C19.5 1.5 18.5 3.5 18 5.5" stroke="#12381e" strokeWidth="1.5" strokeLinecap="round" />
+    <svg
+      className="botanical-leaf-svg left-leaf"
+      width="36"
+      height="54"
+      viewBox="0 0 36 54"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M18 52C18 52 14 38 6 28C1 21.5 2 12 10 14C12.5 14.6 15 17 18 20"
+        stroke="#12381e"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18 42C18 42 24 32 30 24C34 18.5 32 10 24 12C21.5 12.6 19.5 15 18 18"
+        stroke="#12381e"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18 28C18 28 12 18 8 10C5.5 5 9 1.5 14 3.5C16 4.3 17 6.5 18 9"
+        stroke="#12381e"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18 20C18 20 22 12 26 6C28.5 2.2 25.5-0.5 21 1C19.5 1.5 18.5 3.5 18 5.5"
+        stroke="#12381e"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
       <path d="M18 52V2" stroke="#12381e" strokeWidth="1.2" strokeLinecap="round" />
     </svg>
   );
@@ -250,11 +288,40 @@ function LeafSprigLeft() {
 
 function LeafSprigRight() {
   return (
-    <svg className="botanical-leaf-svg right-leaf" width="36" height="54" viewBox="0 0 36 54" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{ transform: "scaleX(-1)" }}>
-      <path d="M18 52C18 52 14 38 6 28C1 21.5 2 12 10 14C12.5 14.6 15 17 18 20" stroke="#12381e" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M18 42C18 42 24 32 30 24C34 18.5 32 10 24 12C21.5 12.6 19.5 15 18 18" stroke="#12381e" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M18 28C18 28 12 18 8 10C5.5 5 9 1.5 14 3.5C16 4.3 17 6.5 18 9" stroke="#12381e" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M18 20C18 20 22 12 26 6C28.5 2.2 25.5-0.5 21 1C19.5 1.5 18.5 3.5 18 5.5" stroke="#12381e" strokeWidth="1.5" strokeLinecap="round" />
+    <svg
+      className="botanical-leaf-svg right-leaf"
+      width="36"
+      height="54"
+      viewBox="0 0 36 54"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      style={{ transform: "scaleX(-1)" }}
+    >
+      <path
+        d="M18 52C18 52 14 38 6 28C1 21.5 2 12 10 14C12.5 14.6 15 17 18 20"
+        stroke="#12381e"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18 42C18 42 24 32 30 24C34 18.5 32 10 24 12C21.5 12.6 19.5 15 18 18"
+        stroke="#12381e"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18 28C18 28 12 18 8 10C5.5 5 9 1.5 14 3.5C16 4.3 17 6.5 18 9"
+        stroke="#12381e"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M18 20C18 20 22 12 26 6C28.5 2.2 25.5-0.5 21 1C19.5 1.5 18.5 3.5 18 5.5"
+        stroke="#12381e"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
       <path d="M18 52V2" stroke="#12381e" strokeWidth="1.2" strokeLinecap="round" />
     </svg>
   );
@@ -262,16 +329,37 @@ function LeafSprigRight() {
 
 function TornEdgeTop({ color = "#12381e" }: { color?: string }) {
   return (
-    <svg className="torn-edge torn-edge-top" width="1200" height="120" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 0h1200v40c-55 12-115 45-180 15-65-30-125 15-190 25-65 10-135-25-190-10-55 15-110 35-180 5-70-30-130 15-190 20-60 5-115-30-170-15C45 95 20 65 0 75Z" fill={color} />
+    <svg
+      className="torn-edge torn-edge-top"
+      width="1200"
+      height="120"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M0 0h1200v40c-55 12-115 45-180 15-65-30-125 15-190 25-65 10-135-25-190-10-55 15-110 35-180 5-70-30-130 15-190 20-60 5-115-30-170-15C45 95 20 65 0 75Z"
+        fill={color}
+      />
     </svg>
   );
 }
 
 function TornEdgeBottom({ color = "#12381e" }: { color?: string }) {
   return (
-    <svg className="torn-edge torn-edge-bottom" width="1200" height="120" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" style={{ transform: "rotate(180deg)" }}>
-      <path d="M0 0h1200v40c-55 12-115 45-180 15-65-30-125 15-190 25-65 10-135-25-190-10-55 15-110 35-180 5-70-30-130 15-190 20-60 5-115-30-170-15C45 95 20 65 0 75Z" fill={color} />
+    <svg
+      className="torn-edge torn-edge-bottom"
+      width="1200"
+      height="120"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+      style={{ transform: "rotate(180deg)" }}
+    >
+      <path
+        d="M0 0h1200v40c-55 12-115 45-180 15-65-30-125 15-190 25-65 10-135-25-190-10-55 15-110 35-180 5-70-30-130 15-190 20-60 5-115-30-170-15C45 95 20 65 0 75Z"
+        fill={color}
+      />
     </svg>
   );
 }
@@ -328,11 +416,14 @@ export function WeddingInvitation() {
       audioRef.current = new Audio(musicFile);
       audioRef.current.loop = true;
     }
-    audioRef.current.play().then(() => {
-      setMusic(true);
-    }).catch((err) => {
-      console.log("Audio play error on 2nd video start:", err);
-    });
+    audioRef.current
+      .play()
+      .then(() => {
+        setMusic(true);
+      })
+      .catch((err) => {
+        console.log("Audio play error on 2nd video start:", err);
+      });
 
     const revealElements = document.querySelectorAll<HTMLElement>("[data-reveal]");
 
@@ -348,7 +439,7 @@ export function WeddingInvitation() {
           }
         });
       },
-      { threshold: 0.05, rootMargin: "0px 0px 100px 0px" }
+      { threshold: 0.05, rootMargin: "0px 0px 100px 0px" },
     );
 
     revealElements.forEach((el) => {
@@ -407,12 +498,12 @@ export function WeddingInvitation() {
         confetti({
           ...defaults,
           particleCount,
-          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+          origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
         });
         confetti({
           ...defaults,
           particleCount,
-          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+          origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
         });
       }, 250);
     }
@@ -467,11 +558,14 @@ export function WeddingInvitation() {
       audioRef.current.pause();
       setMusic(false);
     } else {
-      audioRef.current.play().then(() => {
-        setMusic(true);
-      }).catch((err) => {
-        console.log("Audio playback error:", err);
-      });
+      audioRef.current
+        .play()
+        .then(() => {
+          setMusic(true);
+        })
+        .catch((err) => {
+          console.log("Audio playback error:", err);
+        });
     }
   };
 
@@ -502,34 +596,59 @@ export function WeddingInvitation() {
   };
 
   const moveLightbox = (direction: number) => {
-    setLightbox((current) => current === null ? 0 : (current + direction + gallery.length) % gallery.length);
+    setLightbox((current) =>
+      current === null ? 0 : (current + direction + gallery.length) % gallery.length,
+    );
   };
 
   return (
-    <main className={`wedding-page ${!contentRevealed ? 'locked-scroll' : ''}`}>
-      {contentRevealed && <div className="scroll-progress" style={{ transform: `scaleX(${progress / 100})` }} />}
+    <main className={`wedding-page ${!contentRevealed ? "locked-scroll" : ""}`}>
+      {contentRevealed && (
+        <div className="scroll-progress" style={{ transform: `scaleX(${progress / 100})` }} />
+      )}
 
       {!contentRevealed && (
         <div className="glitter-container" aria-hidden="true">
-          {Array.from({ length: 40 }, (_, index) => <i key={index} className="glitter-particle" style={{ "--i": index, "--x": Math.random(), "--y": Math.random() } as React.CSSProperties} />)}
+          {Array.from({ length: 40 }, (_, index) => (
+            <i
+              key={index}
+              className="glitter-particle"
+              style={
+                { "--i": index, "--x": Math.random(), "--y": Math.random() } as React.CSSProperties
+              }
+            />
+          ))}
         </div>
       )}
 
       {contentRevealed && (
         <div className="particles" aria-hidden="true">
-          {Array.from({ length: 12 }, (_, index) => <i key={index} style={{ "--i": index } as React.CSSProperties} />)}
+          {Array.from({ length: 12 }, (_, index) => (
+            <i key={index} style={{ "--i": index } as React.CSSProperties} />
+          ))}
         </div>
       )}
 
       {contentRevealed && (
         <>
-          <Button className="music-button" size="icon" variant="outline" onClick={toggleMusic} aria-label={music ? "Pause ambient music" : "Play ambient music"}>
+          <Button
+            className="music-button"
+            size="icon"
+            variant="outline"
+            onClick={toggleMusic}
+            aria-label={music ? "Pause ambient music" : "Play ambient music"}
+          >
             {music ? <Pause /> : <Music2 />}
           </Button>
 
-          <nav className={navOpen ? "floating-nav is-open" : "floating-nav"} aria-label="Invitation sections">
+          <nav
+            className={navOpen ? "floating-nav is-open" : "floating-nav"}
+            aria-label="Invitation sections"
+          >
             {["Invitation", "Story", "Memories", "Events", "Venue", "Notes"].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setNavOpen(false)}>{item}</a>
+              <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setNavOpen(false)}>
+                {item}
+              </a>
             ))}
           </nav>
         </>
@@ -566,7 +685,14 @@ export function WeddingInvitation() {
       {contentRevealed && (
         <>
           <section id="welcome" className="hero-section">
-            <video src={weddingAnimation} autoPlay loop muted playsInline className="hero-video-bg" />
+            <video
+              src={weddingAnimation}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="hero-video-bg"
+            />
             <div className="hero-shade" />
             <div className="hero-copy" data-reveal>
               <p className="hero-subheading">WE ARE GETTING MARRIED</p>
@@ -588,35 +714,77 @@ export function WeddingInvitation() {
             </div>
           </section>
 
-          <section className="date-reveal-section" data-reveal style={{ backgroundImage: `url(${scratchBg})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+          <section
+            className="date-reveal-section"
+            data-reveal
+            style={{
+              backgroundImage: `url(${scratchBg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
             <p className="eyebrow">Save our date</p>
             <h2>A perfect day awaits</h2>
-            <p className="section-intro">Gently scratch each olive panel to reveal when our forever begins.</p>
+            <p className="section-intro">
+              Gently scratch each heart to reveal when our forever begins.
+            </p>
             <div className="scratch-grid">
-              <ScratchBox label="Day" value="07" coverImage={dayImg} onReveal={() => setRevealedDates((count) => count + 1)} />
-              <ScratchBox label="Month" value="OCT" coverImage={monthImg} onReveal={() => setRevealedDates((count) => count + 1)} />
-              <ScratchBox label="Year" value="2026" coverImage={yearImg} onReveal={() => setRevealedDates((count) => count + 1)} />
+              <svg className="scratch-shape-definitions" aria-hidden="true" focusable="false">
+                <defs>
+                  <clipPath id="scratch-heart-clip" clipPathUnits="objectBoundingBox">
+                    <path d="M 0.5 0.94 C 0.44 0.87 0.08 0.57 0.06 0.38 C 0.04 0.22 0.16 0.1 0.3 0.1 C 0.4 0.1 0.47 0.16 0.5 0.25 C 0.53 0.16 0.6 0.1 0.7 0.1 C 0.84 0.1 0.96 0.22 0.94 0.38 C 0.92 0.57 0.56 0.87 0.5 0.94 Z" />
+                  </clipPath>
+                </defs>
+              </svg>
+              <ScratchBox
+                label="Day"
+                value="07"
+                coverImage={dayImg}
+                onReveal={() => setRevealedDates((count) => count + 1)}
+              />
+              <ScratchBox
+                label="Month"
+                value="OCT"
+                coverImage={monthImg}
+                onReveal={() => setRevealedDates((count) => count + 1)}
+              />
+              <ScratchBox
+                label="Year"
+                value="2026"
+                coverImage={yearImg}
+                onReveal={() => setRevealedDates((count) => count + 1)}
+              />
             </div>
             {revealedDates === 3 && (
               <div className="date-celebration" role="status">
-                <div className="celebration-sparkles" aria-hidden="true">✦ ✧ ✦</div>
+                <div className="celebration-sparkles" aria-hidden="true">
+                  ✦ ✧ ✦
+                </div>
                 <strong>Our forever begins</strong>
                 <span className="celebration-date">07 October 2026</span>
               </div>
             )}
           </section>
 
-          <section className="invitation-band" data-reveal style={{ backgroundImage: `url(${invLetterBg})` }}>
+          <section
+            className="invitation-band"
+            data-reveal
+            style={{ backgroundImage: `url(${invLetterBg})` }}
+          >
             <div className="formal-card">
-              <p className="eyebrow">YOU ARE INVITED TO THE<br />WEDDING CEREMONY OF</p>
+              <p className="eyebrow">
+                YOU ARE INVITED TO THE
+                <br />
+                WEDDING CEREMONY OF
+              </p>
 
               <FloralMark />
               <h2 className="script-title card-person-name">Sujin (Samjin)</h2>
 
               <div className="parent-section">
                 <span className="parent-label">SON OF</span>
-                <strong className="parent-names">Mr.Soosadimai & Mrs. Veergin Mary
-                </strong>
+                <strong className="parent-names">Mr.Soosadimai & Mrs. Veergin Mary</strong>
               </div>
 
               <p className="with-connector">With</p>
@@ -631,7 +799,8 @@ export function WeddingInvitation() {
               <div className="card-custom-message">
                 <h3 className="message-title">Dear Friends and Family</h3>
                 <p className="message-body">
-                  Join us for a celebration of love, laughter, and unforgettable memories as we begin our forever.
+                  Join us for a celebration of love, laughter, and unforgettable memories as we
+                  begin our forever.
                 </p>
               </div>
 
@@ -644,7 +813,16 @@ export function WeddingInvitation() {
             <TornEdgeTop color="#22442c" />
             <p className="eyebrow">TILL OUR BIG DAY</p>
             <h2>Countdown</h2>
-            <div className="countdown-flanked-wrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', width: '100%' }}>
+            <div
+              className="countdown-flanked-wrapper"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "1.5rem",
+                width: "100%",
+              }}
+            >
               <LeafSprigLeft />
               <div className="countdown">
                 {Object.entries(countdown).map(([label, value]) => (
@@ -678,12 +856,12 @@ export function WeddingInvitation() {
             <div className="slideshow-shade" />
             <div className="slideshow-copy" data-reveal>
               <h2>In the Days We’ll Share</h2>
-              <p>We look forward to capturing stolen glances, intertwined hands, quiet evenings, and all the love in between.</p>
+              <p>
+                We look forward to capturing stolen glances, intertwined hands, quiet evenings, and
+                all the love in between.
+              </p>
             </div>
-            <div
-              className="slide-dots"
-              onPointerDown={(e) => e.stopPropagation()}
-            >
+            <div className="slide-dots" onPointerDown={(e) => e.stopPropagation()}>
               {slideshowImages.map((_, index) => (
                 <button
                   key={index}
@@ -696,14 +874,15 @@ export function WeddingInvitation() {
             </div>
           </section>
 
-
-
           <section className="gallery-section paper-section torn-section">
             <TornEdgeTop color="#22442c" />
             <div data-reveal>
               <p className="eyebrow">Through our eyes</p>
               <h2>A Love We Imagine</h2>
-              <p className="gallery-subtitle">The gestures, details, and fleeting moments that inspire the beginning of our forever.</p>
+              <p className="gallery-subtitle">
+                The gestures, details, and fleeting moments that inspire the beginning of our
+                forever.
+              </p>
             </div>
             <div className="gallery-grid">
               {gallery.map((image, index) => (
@@ -724,13 +903,22 @@ export function WeddingInvitation() {
           <section id="events" className="events-section paper-section torn-section">
             <TornEdgeTop color="#22442c" />
             <TornEdgeBottom color="#22442c" />
-            <div data-reveal><p className="eyebrow">The celebrations</p><h2>Join us for</h2></div>
+            <div data-reveal>
+              <p className="eyebrow">The celebrations</p>
+              <h2>Join us for</h2>
+            </div>
             <div className="event-list">
               {/* Engagement Card */}
               <article
                 className="event-card event-engagement"
                 data-reveal
-                onClick={() => window.open("https://www.google.com/maps/search/?api=1&query=Christ+the+King+Parish+Hall+Paruthiyoor+Pozhiyoor", "_blank", "noopener,noreferrer")}
+                onClick={() =>
+                  window.open(
+                    "https://www.google.com/maps/search/?api=1&query=Christ+the+King+Parish+Hall+Paruthiyoor+Pozhiyoor",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
               >
                 <a
                   className="event-card-link"
@@ -749,11 +937,7 @@ export function WeddingInvitation() {
                 />
 
                 <div className="event-card-btn-wrapper">
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="event-map-btn"
-                  >
+                  <Button asChild variant="outline" className="event-map-btn">
                     <a
                       href="https://www.google.com/maps/search/?api=1&query=Christ+the+King+Parish+Hall+Paruthiyoor+Pozhiyoor"
                       target="_blank"
@@ -769,7 +953,13 @@ export function WeddingInvitation() {
               <article
                 className="event-card event-wedding"
                 data-reveal
-                onClick={() => window.open("https://www.google.com/maps/search/?api=1&query=St.+John+of+the+Cross+Church+Siluvaipuram", "_blank", "noopener,noreferrer")}
+                onClick={() =>
+                  window.open(
+                    "https://www.google.com/maps/search/?api=1&query=St.+John+of+the+Cross+Church+Siluvaipuram",
+                    "_blank",
+                    "noopener,noreferrer",
+                  )
+                }
               >
                 <a
                   className="event-card-link"
@@ -788,11 +978,7 @@ export function WeddingInvitation() {
                 />
 
                 <div className="event-card-btn-wrapper">
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="event-map-btn"
-                  >
+                  <Button asChild variant="outline" className="event-map-btn">
                     <a
                       href="https://www.google.com/maps/search/?api=1&query=St.+John+of+the+Cross+Church+Siluvaipuram"
                       target="_blank"
@@ -819,7 +1005,12 @@ export function WeddingInvitation() {
             <div className={`image-letter-wrapper ${letterOpen ? "is-open" : ""}`} data-reveal>
               {/* Closed envelope image */}
               <div className="letter-closed-img">
-                <img src={letterClosedImage} alt="Sealed love letter envelope" width={1400} height={800} />
+                <img
+                  src={letterClosedImage}
+                  alt="Sealed love letter envelope"
+                  width={1400}
+                  height={800}
+                />
                 {!letterOpen && (
                   <button
                     className="letter-img-seal"
@@ -831,46 +1022,80 @@ export function WeddingInvitation() {
               </div>
 
               {/* Open envelope image */}
-              <div className="letter-open-img" onClick={() => setLetterOpen(false)} title="Click to close letter">
-                <img src={letterOpenImage} alt="Opened love letter with heartfelt message" width={1500} height={1500} />
+              <div
+                className="letter-open-img"
+                onClick={() => setLetterOpen(false)}
+                title="Click to close letter"
+              >
+                <img
+                  src={letterOpenImage}
+                  alt="Opened love letter with heartfelt message"
+                  width={1500}
+                  height={1500}
+                />
               </div>
             </div>
           </section>
 
           <section className="final-section">
-            <img src={laughImage} alt="Sujin and Jineesha James laughing together at dusk" width={1280} height={912} loading="lazy" />
+            <img
+              src={laughImage}
+              alt="Sujin and Jineesha James laughing together at dusk"
+              width={1280}
+              height={912}
+              loading="lazy"
+            />
             <div className="final-shade" />
             <div data-reveal>
               <Sparkles />
               <p className="eyebrow">With you, always</p>
-              <h2>And So Our<br /><em>Forever Begins...</em></h2>
+              <h2>
+                And So Our
+                <br />
+                <em>Forever Begins...</em>
+              </h2>
               <p>07 · 10 · 2026</p>
               <span className="final-names">Sujin &amp; Jineesha James</span>
               <div className="final-btn-wrap">
                 <button className="end-popup-trigger" onClick={() => setShowEndPopup(true)}>
                   <Sparkles size={12} />
-                  <span>Brother's Wedding <br/>Invitation</span>
+                  <span>
+                    Brother's Wedding <br />
+                    Invitation
+                  </span>
                 </button>
               </div>
             </div>
-
           </section>
-
-
 
           {/* ── End-of-page Popup ── */}
 
           {showEndPopup && (
-            <div className="end-popup-backdrop" role="dialog" aria-modal="true" aria-label="Brother's Wedding Invitation" onClick={(e) => { if (e.target === e.currentTarget) setShowEndPopup(false); }}>
+            <div
+              className="end-popup-backdrop"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Brother's Wedding Invitation"
+              onClick={(e) => {
+                if (e.target === e.currentTarget) setShowEndPopup(false);
+              }}
+            >
               <div className="end-popup">
-                <button className="end-popup-close" onClick={() => setShowEndPopup(false)} aria-label="Close">
+                <button
+                  className="end-popup-close"
+                  onClick={() => setShowEndPopup(false)}
+                  aria-label="Close"
+                >
                   <X size={18} />
                 </button>
-                <div className="end-popup-icon" aria-hidden="true">✦</div>
+                <div className="end-popup-icon" aria-hidden="true">
+                  ✦
+                </div>
                 <p className="end-popup-eyebrow">A Special Celebration</p>
                 <h2 className="end-popup-title">My Brother's Invitation</h2>
                 <p className="end-popup-body">
-                  We warmly invite you to explore and celebrate my brother's upcoming wedding celebration as well.
+                  We warmly invite you to explore and celebrate my brother's upcoming wedding
+                  celebration as well.
                 </p>
                 <a
                   href="https://velvet-stories26.github.io/Wedding-invitation2/"
@@ -884,18 +1109,58 @@ export function WeddingInvitation() {
                 >
                   <Heart size={14} /> View Invitation
                 </a>
-                <button className="end-popup-skip" onClick={() => setShowEndPopup(false)}>Close</button>
+                <button className="end-popup-skip" onClick={() => setShowEndPopup(false)}>
+                  Close
+                </button>
               </div>
             </div>
           )}
 
           {lightbox !== null && (
-            <div className="lightbox" role="dialog" aria-modal="true" aria-label="Photo gallery" onPointerDown={(event) => { swipeStart.current = event.clientX; }} onPointerUp={(event) => { const distance = event.clientX - swipeStart.current; if (Math.abs(distance) > 40) moveLightbox(distance > 0 ? -1 : 1); }}>
-              <Button size="icon" variant="ghost" className="lightbox-close" onClick={() => setLightbox(null)} aria-label="Close gallery"><X /></Button>
-              <Button size="icon" variant="ghost" className="lightbox-prev" onClick={() => moveLightbox(-1)} aria-label="Previous photo"><ChevronLeft /></Button>
+            <div
+              className="lightbox"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Photo gallery"
+              onPointerDown={(event) => {
+                swipeStart.current = event.clientX;
+              }}
+              onPointerUp={(event) => {
+                const distance = event.clientX - swipeStart.current;
+                if (Math.abs(distance) > 40) moveLightbox(distance > 0 ? -1 : 1);
+              }}
+            >
+              <Button
+                size="icon"
+                variant="ghost"
+                className="lightbox-close"
+                onClick={() => setLightbox(null)}
+                aria-label="Close gallery"
+              >
+                <X />
+              </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="lightbox-prev"
+                onClick={() => moveLightbox(-1)}
+                aria-label="Previous photo"
+              >
+                <ChevronLeft />
+              </Button>
               <img src={gallery[lightbox]?.src} alt={gallery[lightbox]?.alt ?? "Wedding memory"} />
-              <Button size="icon" variant="ghost" className="lightbox-next" onClick={() => moveLightbox(1)} aria-label="Next photo"><ChevronRight /></Button>
-              <span>{lightbox + 1} / {gallery.length}</span>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="lightbox-next"
+                onClick={() => moveLightbox(1)}
+                aria-label="Next photo"
+              >
+                <ChevronRight />
+              </Button>
+              <span>
+                {lightbox + 1} / {gallery.length}
+              </span>
             </div>
           )}
         </>
