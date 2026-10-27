@@ -1059,7 +1059,7 @@ export function WeddingInvitation() {
               </h2>
               <p>07 · 10 · 2026</p>
               <span className="final-names">J. Sebastian Rajesh &amp; C.T. Christia</span>
-              <div className="final-btn-wrap">
+              {/* <div className="final-btn-wrap">
                 <button className="end-popup-trigger" onClick={() => setShowEndPopup(true)}>
                   <Sparkles size={12} />
                   <span>
@@ -1067,13 +1067,13 @@ export function WeddingInvitation() {
                     Invitation
                   </span>
                 </button>
-              </div>
+              </div> */}
             </div>
           </section>
 
           {/* ── End-of-page Popup ── */}
 
-          {showEndPopup && (
+          {/* {showEndPopup && (
             <div
               className="end-popup-backdrop"
               role="dialog"
@@ -1165,7 +1165,7 @@ export function WeddingInvitation() {
                 {lightbox + 1} / {gallery.length}
               </span>
             </div>
-          )}
+          )} */}
         </>
       )}
     </main>
