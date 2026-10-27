@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import {
+  CalendarDays,
+  Church,
   ChevronLeft,
   ChevronRight,
+  Clock3,
   Heart,
   Music2,
-  Navigation,
   Pause,
   Sparkles,
   X,
@@ -19,9 +21,6 @@ import laughImage from "@/assets/memory-laugh.png";
 import startAnimeVideo from "@/assets/start-anime.mp4";
 import weddingAnimation from "@/assets/wedding-animation.mp4";
 import invLetterBg from "@/assets/inv-letter.png";
-import engagementImage from "@/assets/engagement.png";
-import weddingImage from "@/assets/wedding.png";
-import receptionImage from "@/assets/reception.png";
 import dayImg from "@/assets/day.png";
 import monthImg from "@/assets/month.png";
 import yearImg from "@/assets/year.png";
@@ -697,9 +696,9 @@ export function WeddingInvitation() {
             <div className="hero-copy" data-reveal>
               <p className="hero-subheading">WE ARE GETTING MARRIED</p>
               <h1 className="hero-names">
-                <span className="script-title">Sujin</span>
+                <span className="script-title">J. Sebastian Rajesh</span>
                 <span className="hero-amp">&amp;</span>
-                <span className="script-title">Jineesha</span>
+                <span className="script-title">C.T. Christia</span>
               </h1>
               <div className="hero-gold-divider">
                 <span className="divider-line" />
@@ -780,7 +779,7 @@ export function WeddingInvitation() {
               </p>
 
               <FloralMark />
-              <h2 className="script-title card-person-name">Sujin (Samjin)</h2>
+              <h2 className="script-title card-person-name">J. Sebastian Rajesh</h2>
 
               <div className="parent-section">
                 <span className="parent-label">SON OF</span>
@@ -789,7 +788,7 @@ export function WeddingInvitation() {
 
               <p className="with-connector">With</p>
 
-              <h2 className="script-title card-person-name">Jineesha James</h2>
+              <h2 className="script-title card-person-name">C.T. Christia</h2>
 
               <div className="parent-section">
                 <span className="parent-label">DAUGHTER OF</span>
@@ -900,97 +899,69 @@ export function WeddingInvitation() {
             <TornEdgeBottom color="#22442c" />
           </section>
 
-          <section id="events" className="events-section paper-section torn-section">
+          <section
+            id="events"
+            className="events-section paper-section torn-section wedding-details-section"
+          >
             <TornEdgeTop color="#22442c" />
             <TornEdgeBottom color="#22442c" />
-            <div data-reveal>
-              <p className="eyebrow">The celebrations</p>
-              <h2>Join us for</h2>
-            </div>
-            <div className="event-list">
-              {/* Engagement Card */}
-              <article
-                className="event-card event-engagement"
-                data-reveal
-                onClick={() =>
-                  window.open(
-                    "https://www.google.com/maps/search/?api=1&query=Christ+the+King+Parish+Hall+Paruthiyoor+Pozhiyoor",
-                    "_blank",
-                    "noopener,noreferrer",
-                  )
-                }
-              >
-                <a
-                  className="event-card-link"
-                  href="https://www.google.com/maps/search/?api=1&query=Christ+the+King+Parish+Hall+Paruthiyoor+Pozhiyoor"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Open Engagement venue on Google Maps"
-                />
+            <div className="wedding-details-content">
+              <div className="wedding-details-heading" data-reveal>
+                <p className="eyebrow">With joyful hearts</p>
+                <h2>The Wedding Celebration</h2>
+              </div>
 
-                {/* Full image — no crop, no letterbox */}
-                <img
-                  src={engagementImage}
-                  alt="Engagement venue"
-                  className="reception-full-img"
-                  loading="lazy"
-                />
-
-                <div className="event-card-btn-wrapper">
-                  <Button asChild variant="outline" className="event-map-btn">
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=Christ+the+King+Parish+Hall+Paruthiyoor+Pozhiyoor"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Navigation className="mr-2 h-4 w-4" /> View Route
-                    </a>
-                  </Button>
+              <div className="wedding-couple" data-reveal>
+                <div className="wedding-person">
+                  <p className="wedding-person-label">The Groom</p>
+                  <h3>J. Sebastian Rajesh</h3>
+                  <p className="wedding-qualifications">(M.Com., IBFA)</p>
+                  <p className="wedding-parents">
+                    Mr. Joseph and Mrs. Christina Mary (A) Meena
+                  </p>
                 </div>
-              </article>
-
-              {/* Wedding Card */}
-              <article
-                className="event-card event-wedding"
-                data-reveal
-                onClick={() =>
-                  window.open(
-                    "https://www.google.com/maps/search/?api=1&query=St.+John+of+the+Cross+Church+Siluvaipuram",
-                    "_blank",
-                    "noopener,noreferrer",
-                  )
-                }
-              >
-                <a
-                  className="event-card-link"
-                  href="https://www.google.com/maps/search/?api=1&query=St.+John+of+the+Cross+Church+Siluvaipuram"
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="Open Wedding venue on Google Maps"
-                />
-
-                {/* Full image — no crop, no letterbox */}
-                <img
-                  src={weddingImage}
-                  alt="Wedding venue"
-                  className="reception-full-img"
-                  loading="lazy"
-                />
-
-                <div className="event-card-btn-wrapper">
-                  <Button asChild variant="outline" className="event-map-btn">
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=St.+John+of+the+Cross+Church+Siluvaipuram"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Navigation className="mr-2 h-4 w-4" /> View Route
-                    </a>
-                  </Button>
+                <span className="wedding-couple-ampersand" aria-hidden="true">
+                  &amp;
+                </span>
+                <div className="wedding-person">
+                  <p className="wedding-person-label">The Bride</p>
+                  <h3>C.T. Christia</h3>
+                  <p className="wedding-qualifications">(B.A., B.Ed.)</p>
+                  <p className="wedding-parents">
+                    Mr. Carmel Thangaraj and Mrs. Latha Mary (Late)
+                  </p>
                 </div>
-              </article>
+              </div>
 
-              {/* Reception Card */}
+              <blockquote className="wedding-invitation-message" data-reveal>
+                “We cordially invite your esteemed presence and blessings with family on the
+                auspicious occasion of the marriage of our son, J. Sebastian Rajesh, with C.T.
+                Christia.”
+              </blockquote>
+
+              <div className="wedding-event-details" data-reveal>
+                <article className="wedding-detail-card">
+                  <CalendarDays aria-hidden="true" />
+                  <p className="wedding-detail-label">Wedding Date</p>
+                  <p className="wedding-detail-value">Sunday, 15 November 2026</p>
+                </article>
+                <article className="wedding-detail-card">
+                  <Church aria-hidden="true" />
+                  <p className="wedding-detail-label">Church</p>
+                  <p className="wedding-detail-value">Sacred Heart Church, Yercaud</p>
+                </article>
+                <article className="wedding-detail-card">
+                  <Clock3 aria-hidden="true" />
+                  <p className="wedding-detail-label">Ceremony Time</p>
+                  <p className="wedding-detail-value">10:30 AM – 11:30 AM</p>
+                </article>
+              </div>
+
+              <div className="wedding-reception" data-reveal>
+                <p className="wedding-detail-label">Reception</p>
+                <h3>Sacred Heart Church Community Hall</h3>
+                <p>Yercaud</p>
+              </div>
             </div>
           </section>
 
@@ -1040,7 +1011,7 @@ export function WeddingInvitation() {
           <section className="final-section">
             <img
               src={laughImage}
-              alt="Sujin and Jineesha James laughing together at dusk"
+              alt="J. Sebastian Rajesh and C.T. Christia laughing together at dusk"
               width={1280}
               height={912}
               loading="lazy"
@@ -1055,7 +1026,7 @@ export function WeddingInvitation() {
                 <em>Forever Begins...</em>
               </h2>
               <p>07 · 10 · 2026</p>
-              <span className="final-names">Sujin &amp; Jineesha James</span>
+              <span className="final-names">J. Sebastian Rajesh &amp; C.T. Christia</span>
               <div className="final-btn-wrap">
                 <button className="end-popup-trigger" onClick={() => setShowEndPopup(true)}>
                   <Sparkles size={12} />

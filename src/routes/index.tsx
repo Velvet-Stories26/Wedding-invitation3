@@ -7,9 +7,9 @@ import { WeddingInvitation } from "@/components/WeddingInvitation";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sujin & Jineesha Wedding Invitation" },
-      { name: "description", content: "Join Sujin & Jineesha for their wedding celebration on October 7, 2026." },
-      { property: "og:title", content: "Sujin & Jineesha | Wedding Invitation" },
+      { title: "J. Sebastian Rajesh & C.T. Christia Wedding Invitation" },
+      { name: "description", content: "Join J. Sebastian Rajesh and C.T. Christia for their wedding celebration on November 15, 2026." },
+      { property: "og:title", content: "J. Sebastian Rajesh & C.T. Christia | Wedding Invitation" },
       { property: "og:description", content: "A celebration of love — October 7, 2026." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
