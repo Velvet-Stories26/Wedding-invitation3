@@ -880,11 +880,12 @@ a {
 .scratch-grid {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
-  max-width: 38rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.45rem, 2vw, 1rem);
+  width: 100%;
+  max-width: 44rem;
   margin: 2rem auto 1.5rem auto;
-  padding: 0 1.5rem;
+  padding: 0 0.75rem;
 }
 
 .scratch-shape-definitions {
@@ -896,9 +897,16 @@ a {
 
 @media (max-width: 768px) {
   .scratch-grid {
-    gap: 0.7rem;
-    padding: 0 1rem;
     max-width: 100%;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .scratch-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+    padding: 0 0.4rem;
   }
 }
 
@@ -911,7 +919,7 @@ a {
   justify-content: center;
   border: none;
   border-radius: 0;
-  background: #ffffff;
+  background: #f7f1e7;
   clip-path: url(#scratch-heart-clip);
   user-select: none;
   -webkit-user-select: none;
@@ -932,7 +940,7 @@ a {
 
 .scratch-item .revealed-label {
   font-family: "Cormorant Garamond", var(--font-serif), serif;
-  font-size: 0.72rem;
+  font-size: clamp(0.58rem, 1.5vw, 0.9rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.3em;
@@ -942,7 +950,7 @@ a {
 
 .scratch-item .revealed-value {
   font-family: "Italiana", "Cormorant Garamond", var(--font-serif), serif;
-  font-size: clamp(1.3rem, 5vw, 2.8rem);
+  font-size: clamp(1.1rem, 4vw, 2.4rem);
   font-weight: 400;
   color: #641d2d;
   letter-spacing: 0.04em;
