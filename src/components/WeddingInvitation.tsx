@@ -803,7 +803,7 @@ export function WeddingInvitation() {
             <div className="hero-copy" data-reveal>
               <p className="hero-subheading">WE ARE GETTING MARRIED</p>
               <h1 className="hero-names">
-                <span className="script-title">J. Sebastian Rajesh</span>
+                <span className="script-title">J. Sebastian </span>
                 <span className="hero-amp">&amp;</span>
                 <span className="script-title">C.T. Christia</span>
               </h1>
@@ -1078,8 +1078,8 @@ export function WeddingInvitation() {
 
           <section className="polaroid-section">
   <div data-reveal>
-    <p className="eyebrow">Little pieces of us</p>
-    <h2>Polaroid memories</h2>
+    <p className="eyebrow">Through our eyes</p>
+              <h2>A Love We Imagine</h2>
   </div>
 
   <div className="polaroids">
@@ -1146,25 +1146,33 @@ export function WeddingInvitation() {
                 backgroundImage: `linear-gradient(rgba(32, 0, 8, 0.24), rgba(32, 0, 8, 0.24)), url(${silkBurgundy})`,
               }}
             />
-            <div className="letter-wish" data-reveal>
-              <h2 className="letter-wish-opening">Two hearts, one beautiful journey </h2>
-              <div className="letter-wish-ornament" aria-hidden="true">
-                <span />
-                <Heart size={15} strokeWidth={1.5} fill="currentColor" />
-                <span />
-              </div>
-              <p className="letter-wish-message">
-                May God bless your love with endless happiness,
-                <br />
-                your home with peace, and your forever with
-                <br />
-                beautiful memories and unbreakable love.
-              </p>
-              <div className="letter-wish-divider" aria-hidden="true" />
-              <p className="letter-wish-closing">
-                <strong>With love &amp; blessings, Always.</strong>
-              </p>
-            </div>
+          <div className="letter-wish" data-reveal>
+  <h2 className="letter-wish-opening">
+    Two Hearts, One Beautiful Journey
+  </h2>
+
+  <div className="letter-wish-ornament" aria-hidden="true">
+    <span />
+    <Heart size={15} strokeWidth={1.5} fill="currentColor" />
+    <span />
+  </div>
+
+  <p className="letter-wish-message">
+    As we begin our forever,
+    <br />
+    your love and blessings will mean the world to us.
+    <br />
+    We look forward to celebrating
+    <br />
+    this beautiful beginning with you.
+  </p>
+
+  <div className="letter-wish-divider" aria-hidden="true" />
+
+  <p className="letter-wish-closing">
+    <strong>With love &amp; gratitude, Always.</strong>
+  </p>
+</div>
           </section>
 
           <section className="final-section">
