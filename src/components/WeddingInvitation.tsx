@@ -30,6 +30,7 @@ import dayImg from "@/assets/day.png";
 import monthImg from "@/assets/month.png";
 import yearImg from "@/assets/year.png";
 import scratchBg from "@/assets/scratch-bg.png";
+import silkBurgundy from "@/assets/silk-burgundy.jpg";
 
 import letterClosedImage from "@/assets/letter.png";
 import letterOpenImage from "@/assets/letter-open.png";
@@ -1078,46 +1079,34 @@ export function WeddingInvitation() {
             </div>
           </section>
 
-          <section className={`letter-section torn-section ${letterOpen ? "is-open" : ""}`}>
-            <TornEdgeTop color="#641d2d" />
-            <TornEdgeBottom color="#641d2d" />
-            <div className="letter-header" data-reveal>
-              <p className="eyebrow">A little note for you</p>
-              <h2>Words From Our Hearts</h2>
-            </div>
-
-            <div className={`image-letter-wrapper ${letterOpen ? "is-open" : ""}`} data-reveal>
-              {/* Closed envelope image */}
-              <div className="letter-closed-img">
-                <img
-                  src={letterClosedImage}
-                  alt="Sealed love letter envelope"
-                  width={1400}
-                  height={800}
-                />
-                {!letterOpen && (
-                  <button
-                    className="letter-img-seal"
-                    onClick={() => setLetterOpen(true)}
-                    aria-label="Open our love letter"
-                    title="Click seal to open letter"
-                  />
-                )}
+         <section
+            className="letter-section"
+          >
+            <div
+              className="letter-background"
+              aria-hidden="true"
+              style={{
+                backgroundImage: `linear-gradient(rgba(32, 0, 8, 0.24), rgba(32, 0, 8, 0.24)), url(${silkBurgundy})`,
+              }}
+            />
+            <div className="letter-wish" data-reveal>
+              <h2 className="letter-wish-opening">Two hearts, one beautiful journey. 🤍</h2>
+              <div className="letter-wish-ornament" aria-hidden="true">
+                <span />
+                <Heart size={15} strokeWidth={1.5} fill="currentColor" />
+                <span />
               </div>
-
-              {/* Open envelope image */}
-              <div
-                className="letter-open-img"
-                onClick={() => setLetterOpen(false)}
-                title="Click to close letter"
-              >
-                <img
-                  src={letterOpenImage}
-                  alt="Opened love letter with heartfelt message"
-                  width={1500}
-                  height={1500}
-                />
-              </div>
+              <p className="letter-wish-message">
+                May God bless your love with endless happiness,
+                <br />
+                your home with peace, and your forever with
+                <br />
+                beautiful memories and unbreakable love.
+              </p>
+              <div className="letter-wish-divider" aria-hidden="true" />
+              <p className="letter-wish-closing">
+                <strong>With love &amp; blessings, Always.</strong>
+              </p>
             </div>
           </section>
 
