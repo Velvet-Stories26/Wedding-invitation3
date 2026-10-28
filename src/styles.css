@@ -2093,9 +2093,9 @@ a {
   }
 }
 
-.wedding-details-section {
-  background: #f7f1e7 !important;
-  color: #641d2d;
+.paper-section.wedding-details-section {
+  background: #641d2d !important;
+  color: #f7f1e7;
 }
 
 .wedding-details-section .wedding-details-content {
@@ -2110,11 +2110,16 @@ a {
 }
 
 .wedding-details-section .eyebrow {
-  color: #8a6434;
+  color: #e8c77d;
+}
+
+.wedding-details-section .wedding-person-label,
+.wedding-details-section .wedding-ceremony-heading .wedding-detail-label {
+  color: #e8c77d;
 }
 
 .wedding-details-section h2 {
-  color: #641d2d;
+  color: #f7f1e7;
 }
 
 .wedding-couple {
@@ -2165,20 +2170,20 @@ a {
 
 .wedding-person h3 {
   margin: 0;
-  color: #641d2d;
+  color: #f7f1e7;
   font: italic 500 clamp(1.9rem, 4vw, 3rem)/1.1 "Bodoni Moda", "Cormorant Garamond", serif;
 }
 
 .wedding-qualifications {
   margin: 0.35rem 0 1rem;
-  color: #75575a;
+  color: #f7f1e7;
   font: italic 1.05rem/1.4 "Cormorant Garamond", serif;
 }
 
 .wedding-parents {
   max-width: 22rem;
   margin: 0.35rem auto 0;
-  color: #6d5553;
+  color: #f7f1e7;
   font: 1rem/1.5 "Cormorant Garamond", serif;
 }
 
@@ -2191,9 +2196,9 @@ a {
   max-width: 50rem;
   margin: 2.5rem auto;
   padding: 1.4rem 1rem;
-  border-top: 1px solid rgba(168, 128, 69, 0.55);
-  border-bottom: 1px solid rgba(168, 128, 69, 0.55);
-  color: #641d2d;
+  border-top: 1px solid rgba(232, 199, 125, 0.55);
+  border-bottom: 1px solid rgba(232, 199, 125, 0.55);
+  color: #f7f1e7;
   font: italic clamp(1.2rem, 2.2vw, 1.55rem)/1.55 "Cormorant Garamond", serif;
 }
 
@@ -2207,7 +2212,7 @@ a {
 
 .wedding-ceremony-heading h3 {
   margin: 0;
-  color: #641d2d;
+  color: #f7f1e7;
   font: italic 500 clamp(2rem, 5vw, 3.2rem)/1.1 "Bodoni Moda", "Cormorant Garamond", serif;
 }
 
@@ -2227,7 +2232,7 @@ a {
   justify-content: center;
   padding: 1.5rem 1rem;
   border: 1px solid rgba(168, 128, 69, 0.4);
-  background: rgba(255, 253, 248, 0.72);
+  background: #f7f1e7;
 }
 
 .wedding-detail-card > svg {
@@ -2240,6 +2245,7 @@ a {
 
 .wedding-detail-card .wedding-detail-label {
   margin-bottom: 0.45rem;
+  color: #8a6434;
 }
 
 .wedding-detail-value {
@@ -2318,44 +2324,29 @@ a {
 }
 
 .wedding-map-link {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  border-radius: 0.35rem;
-  background: #eee8dd;
-  color: #fffaf2;
-  text-decoration: none;
-}
-
-.wedding-map-preview {
-  display: block;
-  width: 100%;
-  height: clamp(14rem, 34vw, 22rem);
-  border: 0;
-  pointer-events: none;
-}
-
-.wedding-map-cta {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
   display: flex;
   width: fit-content;
-  max-width: calc(100% - 2rem);
   min-height: 2.8rem;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  margin: 0 auto;
+  margin: 1rem auto 0;
   padding: 0.5rem 1.1rem;
   border-radius: 999px;
   background: #7a2437;
   box-shadow: 0 5px 16px rgba(47, 9, 20, 0.25);
+  color: #fffaf2;
+  text-decoration: none;
   font: 500 1.05rem/1.2 "Cormorant Garamond", serif;
   transition:
     background-color 180ms ease,
     transform 180ms ease;
+}
+
+.wedding-map-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wedding-map-cta svg {
@@ -2364,7 +2355,7 @@ a {
   flex: 0 0 auto;
 }
 
-.wedding-map-link:hover .wedding-map-cta {
+.wedding-map-link:hover {
   transform: translateY(-2px);
   background: #641d2d;
 }
@@ -2394,10 +2385,6 @@ a {
 
   .wedding-venue-caption {
     padding: 1.35rem 0 1rem;
-  }
-
-  .wedding-map-preview {
-    height: 15rem;
   }
 
   .wedding-invitation-message {

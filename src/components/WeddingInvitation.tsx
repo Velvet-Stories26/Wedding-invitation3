@@ -265,7 +265,6 @@ function VenueSpotlight({
   mapsQuery: string;
 }) {
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`;
-  const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapsQuery)}&z=15&output=embed`;
 
   return (
     <article className="wedding-venue" data-reveal>
@@ -285,15 +284,6 @@ function VenueSpotlight({
         rel="noreferrer"
         aria-label={`Open ${name}, ${location} in Google Maps`}
       >
-        <iframe
-          className="wedding-map-preview"
-          src={mapEmbedUrl}
-          title={`Map showing ${name}, ${location}`}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          tabIndex={-1}
-          aria-hidden="true"
-        />
         <span className="wedding-map-cta">
           <MapPin aria-hidden="true" />
           View Location
@@ -883,7 +873,7 @@ export function WeddingInvitation() {
           </section>
 
           <section
-            className="events-section paper-section torn-section wedding-details-section"
+            className=" paper-section torn-section wedding-details-section"
             data-reveal
             // style={{ backgroundImage: `url(${invLetterBg})` }}
           >
@@ -1119,7 +1109,7 @@ export function WeddingInvitation() {
 
           <section
             id="events"
-            className="events-section paper-section torn-section wedding-details-section"
+            className="events-section paper-section torn-section "
           >
             <TornEdgeTop color="#641d2d" />
             {/* <TornEdgeBottom color="#641d2d" /> */}
