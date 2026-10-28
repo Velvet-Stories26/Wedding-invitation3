@@ -44,7 +44,7 @@ import slide5 from "@/assets/slide5.png";
 import slide6 from "@/assets/slide6.png";
 import slide7 from "@/assets/slide7.jpeg";
 
-const weddingDate = new Date("2026-10-07T11:00:00+05:30");
+const weddingDate = new Date("2026-11-15T11:00:00+05:30");
 const gallery = [
   { src: slide5, alt: "A love we imagine 1", ratio: "portrait" },
   { src: slide3, alt: "A love we imagine 2", ratio: "portrait" },
@@ -535,6 +535,63 @@ export function WeddingInvitation() {
     };
   }, [contentRevealed]);
 
+  useEffect(() => {
+    if (!contentRevealed) return;
+
+    const section = document.querySelector<HTMLElement>(".letter-section");
+    const background = section?.querySelector<HTMLElement>(".letter-background");
+    if (!section || !background) return;
+
+    let scrollContainer: HTMLElement | null = section.parentElement;
+    while (scrollContainer) {
+      const overflowY = window.getComputedStyle(scrollContainer).overflowY;
+      if (
+        (overflowY === "auto" || overflowY === "scroll") &&
+        scrollContainer.scrollHeight > scrollContainer.clientHeight
+      ) {
+        break;
+      }
+      scrollContainer = scrollContainer.parentElement;
+    }
+    const scrollTarget: EventTarget = scrollContainer ?? window;
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+
+    const updateBackground = () => {
+      frame = 0;
+      if (motionPreference.matches) {
+        background.style.removeProperty("--letter-parallax-y");
+        return;
+      }
+
+      const bounds = section.getBoundingClientRect();
+      const distanceFromCenter =
+        window.innerHeight / 2 - (bounds.top + bounds.height / 2);
+      const progress = Math.max(
+        -1,
+        Math.min(1, distanceFromCenter / (window.innerHeight + bounds.height)),
+      );
+      background.style.setProperty("--letter-parallax-y", `${progress * 24}px`);
+    };
+
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateBackground);
+    };
+
+    scheduleUpdate();
+    scrollTarget.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    motionPreference.addEventListener("change", scheduleUpdate);
+
+    return () => {
+      scrollTarget.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      motionPreference.removeEventListener("change", scheduleUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+      background.style.removeProperty("--letter-parallax-y");
+    };
+  }, [contentRevealed]);
+
   // End popup now triggered by button click
 
   useEffect(() => {
@@ -797,13 +854,13 @@ export function WeddingInvitation() {
               </svg>
               <ScratchBox
                 label="Day"
-                value="07"
+                value="15"
                 coverImage={dayImg}
                 onReveal={() => setRevealedDates((count) => count + 1)}
               />
               <ScratchBox
                 label="Month"
-                value="OCT"
+                value="NOV"
                 coverImage={monthImg}
                 onReveal={() => setRevealedDates((count) => count + 1)}
               />
@@ -820,7 +877,7 @@ export function WeddingInvitation() {
                   ✦ ✧ ✦
                 </div>
                 <strong>Our forever begins</strong>
-                <span className="celebration-date">07 October 2026</span>
+                <span className="celebration-date">15 November 2026</span>
               </div>
             )}
           </section>
@@ -1035,7 +1092,7 @@ export function WeddingInvitation() {
   </div>
 
   <div className="polaroids">
-    {[slide2, slide5, slide7].map((src, index) => (
+    {[slide2, slide6, slide7].map((src, index) => (
       <figure key={src}>
         <img
           src={src}
@@ -1051,8 +1108,8 @@ export function WeddingInvitation() {
         <figcaption>
           {[
             "the long way home",
-            "always laughing",
             "the promise",
+            "always laughing",
           ][index]}
         </figcaption>
       </figure>
@@ -1098,7 +1155,7 @@ export function WeddingInvitation() {
               }}
             />
             <div className="letter-wish" data-reveal>
-              <h2 className="letter-wish-opening">Two hearts, one beautiful journey. 🤍</h2>
+              <h2 className="letter-wish-opening">Two hearts, one beautiful journey </h2>
               <div className="letter-wish-ornament" aria-hidden="true">
                 <span />
                 <Heart size={15} strokeWidth={1.5} fill="currentColor" />
@@ -1135,8 +1192,10 @@ export function WeddingInvitation() {
                 <br />
                 <em>Forever Begins...</em>
               </h2>
-              <p>07 · 10 · 2026</p>
-              <span className="final-names">J. Sebastian Rajesh &amp; C.T. Christia</span>
+              <p>15 · 11 · 2026</p>
+              <span className="final-names">J. Sebastian Rajesh </span>
+              <span>&amp; </span>
+              <span>C.T. Christia</span>
               {/* <div className="final-btn-wrap">
                 <button className="end-popup-trigger" onClick={() => setShowEndPopup(true)}>
                   <Sparkles size={12} />

@@ -2432,7 +2432,7 @@ a {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: transform 160ms ease-out;
+  transform: translate3d(0, var(--letter-parallax-y, 0px), 0) scale(1.035);
   will-change: transform;
 }
 
@@ -2518,6 +2518,8 @@ a {
 @media (prefers-reduced-motion: reduce) {
   .letter-background {
     transition: none;
+    transform: none;
+    will-change: auto;
   }
 }
 
