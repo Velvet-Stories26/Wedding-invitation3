@@ -53,6 +53,7 @@ const gallery = [
 ];
 
 const slideshowImages = [
+  { src: laughImage, alt: "A joyful moment together" },
   // { src: churchImage, alt: "Beautiful memory 1" },
   { src: slide2, alt: "Beautiful memory 2" },
   { src: slide3, alt: "Beautiful memory 3" },
@@ -60,7 +61,6 @@ const slideshowImages = [
   { src: slide5, alt: "Beautiful memory 5" },
   { src: slide6, alt: "Beautiful memory 6" },
   { src: slide7, alt: "Beautiful memory 7" },
-  {src: laughImage, alt :"Beautiful memory 8"}
 ];
 
 function useCountdown() {
