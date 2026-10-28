@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import {
+  ArrowUpRight,
   CalendarDays,
-  Church,
   ChevronLeft,
   ChevronRight,
   Clock3,
   Heart,
+  MapPin,
   Music2,
   Pause,
   Sparkles,
@@ -21,6 +22,10 @@ import laughImage from "@/assets/memory-laugh.png";
 import startAnimeVideo from "@/assets/start-anime.mp4";
 import weddingAnimation from "@/assets/wedding-animation.mp4";
 import invLetterBg from "@/assets/inv-letter.png";
+import churchImage from "@/assets/church_yerucad.png";
+import communityHallImage from "@/assets/community-hall.png";
+import groomPortrait from "@/assets/groom.png";
+import bridePortrait from "@/assets/bride.png";
 import dayImg from "@/assets/day.png";
 import monthImg from "@/assets/month.png";
 import yearImg from "@/assets/year.png";
@@ -242,6 +247,59 @@ function ScratchBox({
         style={{ touchAction: "none" }}
       />
     </div>
+  );
+}
+
+function VenueSpotlight({
+  category,
+  name,
+  location,
+  image,
+  mapsQuery,
+}: {
+  category: string;
+  name: string;
+  location: string;
+  image: string;
+  mapsQuery: string;
+}) {
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`;
+  const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(mapsQuery)}&z=15&output=embed`;
+
+  return (
+    <article className="wedding-venue" data-reveal>
+      <div className="wedding-venue-photo">
+        <img src={image} alt={`${name} in ${location}`} loading="lazy" />
+        <span className="wedding-venue-photo-shade" aria-hidden="true" />
+      </div>
+      <div className="wedding-venue-caption">
+        <p className="wedding-detail-label">{category}</p>
+        <h3>{name}</h3>
+        <p>{location}</p>
+      </div>
+      <a
+        className="wedding-map-link"
+        href={mapsUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Open ${name}, ${location} in Google Maps`}
+      >
+        <iframe
+          className="wedding-map-preview"
+          src={mapEmbedUrl}
+          title={`Map showing ${name}, ${location}`}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          tabIndex={-1}
+          aria-hidden="true"
+        />
+        <span className="wedding-map-cta">
+          <MapPin aria-hidden="true" />
+          View Location
+          <ArrowUpRight aria-hidden="true" />
+        </span>
+      </a>
+    </article>
   );
 }
 
@@ -945,6 +1003,12 @@ export function WeddingInvitation() {
 
               <div className="wedding-couple" data-reveal>
                 <div className="wedding-person">
+                  <img
+                    className="wedding-portrait"
+                    src={groomPortrait}
+                    alt="J. Sebastian Rajesh"
+                    loading="lazy"
+                  />
                   <p className="wedding-person-label">The Groom</p>
                   <h3>J. Sebastian Rajesh</h3>
                   <p className="wedding-qualifications">(M.Com., IBFA)</p>
@@ -956,6 +1020,12 @@ export function WeddingInvitation() {
                   &amp;
                 </span>
                 <div className="wedding-person">
+                  <img
+                    className="wedding-portrait"
+                    src={bridePortrait}
+                    alt="C.T. Christia"
+                    loading="lazy"
+                  />
                   <p className="wedding-person-label">The Bride</p>
                   <h3>C.T. Christia</h3>
                   <p className="wedding-qualifications">(B.A., B.Ed.)</p>
@@ -971,16 +1041,16 @@ export function WeddingInvitation() {
                 Christia.”
               </blockquote>
 
+              <div className="wedding-ceremony-heading" data-reveal>
+                <p className="wedding-detail-label">Wedding at</p>
+                <h3>The Ceremony</h3>
+              </div>
+
               <div className="wedding-event-details" data-reveal>
                 <article className="wedding-detail-card">
                   <CalendarDays aria-hidden="true" />
                   <p className="wedding-detail-label">Wedding Date</p>
                   <p className="wedding-detail-value">Sunday, 15 November 2026</p>
-                </article>
-                <article className="wedding-detail-card">
-                  <Church aria-hidden="true" />
-                  <p className="wedding-detail-label">Church</p>
-                  <p className="wedding-detail-value">Sacred Heart Church, Yercaud</p>
                 </article>
                 <article className="wedding-detail-card">
                   <Clock3 aria-hidden="true" />
@@ -989,10 +1059,21 @@ export function WeddingInvitation() {
                 </article>
               </div>
 
-              <div className="wedding-reception" data-reveal>
-                <p className="wedding-detail-label">Reception</p>
-                <h3>Sacred Heart Church Community Hall</h3>
-                <p>Yercaud</p>
+              <div className="wedding-venues">
+                <VenueSpotlight
+                  category="Wedding Ceremony"
+                  name="Sacred Heart Church"
+                  location="Yercaud, Salem District, Tamil Nadu, India"
+                  image={churchImage}
+                  mapsQuery="Sacred Heart Church, Yercaud"
+                />
+                <VenueSpotlight
+                  category="Wedding Reception"
+                  name="Sacred Heart Church Community Hall"
+                  location="Yercaud, Salem District, Tamil Nadu, India"
+                  image={communityHallImage}
+                  mapsQuery="Sacred Heart Church Community Hall, Yercaud"
+                />
               </div>
             </div>
           </section>
