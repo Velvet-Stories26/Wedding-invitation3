@@ -779,7 +779,7 @@ a {
   padding: 6rem 1.4rem;
 }
 
-.paper-section,
+.paper-section:not(.countdown-section),
 .events-section,
 .letter-section,
 .faq-section,
@@ -1204,7 +1204,7 @@ a {
   position: relative;
   text-align: center;
   padding: 4.5rem 1.5rem;
-  background: #ffffff !important;
+  background-color: #ffffff;
   color: #641d2d !important;
   box-shadow: inset 0 0 60px rgba(232, 210, 210, 0.35);
 }

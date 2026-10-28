@@ -30,7 +30,7 @@ import dayImg from "@/assets/day.png";
 import monthImg from "@/assets/month.png";
 import yearImg from "@/assets/year.png";
 import scratchBg from "@/assets/scratch-bg.png";
-import silkBurgundy from "@/assets/silk-burgundy.jpg";
+import silkBurgundy from "@/assets/silk-burgundy.png";
 
 import letterClosedImage from "@/assets/letter.png";
 import letterOpenImage from "@/assets/letter-open.png";
@@ -53,7 +53,7 @@ const gallery = [
 ];
 
 const slideshowImages = [
-  { src: slide1, alt: "Beautiful memory 1" },
+  // { src: churchImage, alt: "Beautiful memory 1" },
   { src: slide2, alt: "Beautiful memory 2" },
   { src: slide3, alt: "Beautiful memory 3" },
   { src: slide4, alt: "Beautiful memory 4" },
@@ -826,11 +826,11 @@ export function WeddingInvitation() {
           </section>
 
           <section
-            className="invitation-band"
+            className="events-section paper-section torn-section wedding-details-section"
             data-reveal
-            style={{ backgroundImage: `url(${invLetterBg})` }}
+            // style={{ backgroundImage: `url(${invLetterBg})` }}
           >
-            <div className="formal-card">
+            {/* <div className="formal-card">
               <p className="eyebrow">
                 YOU ARE INVITED TO THE
                 <br />
@@ -864,10 +864,80 @@ export function WeddingInvitation() {
 
               <strong className="card-event-date">WEDNESDAY · 07 OCTOBER · 2026</strong>
               <span className="card-event-venue">St.John of the Cross Church</span>
+            </div> */}
+            <div className="wedding-details-content">
+              <div className="wedding-details-heading" data-reveal>
+                <p className="eyebrow">With joyful hearts</p>
+                <h2>The Wedding Celebration</h2>
+              </div>
+
+              <div className="wedding-couple" data-reveal>
+                <div className="wedding-person">
+                  <img
+                    className="wedding-portrait"
+                    src={groomPortrait}
+                    alt="J. Sebastian Rajesh"
+                    loading="lazy"
+                  />
+                  <p className="wedding-person-label">The Groom</p>
+                  <h3>J. Sebastian Rajesh</h3>
+                  <p className="wedding-qualifications">(M.Com., IBFA)</p>
+                  <p className="wedding-parents">
+                    Mr. Joseph and Mrs. Christina Mary (A) Meena
+                  </p>
+                </div>
+                <span className="wedding-couple-ampersand" aria-hidden="true">
+                  &amp;
+                </span>
+                <div className="wedding-person">
+                  <img
+                    className="wedding-portrait"
+                    src={bridePortrait}
+                    alt="C.T. Christia"
+                    loading="lazy"
+                  />
+                  <p className="wedding-person-label">The Bride</p>
+                  <h3>C.T. Christia</h3>
+                  <p className="wedding-qualifications">(B.A., B.Ed.)</p>
+                  <p className="wedding-parents">
+                    Mr. Carmel Thangaraj and Mrs. Latha Mary (Late)
+                  </p>
+                </div>
+              </div>
+
+              <blockquote className="wedding-invitation-message" data-reveal>
+                “We cordially invite your esteemed presence and blessings with family on the
+                auspicious occasion of the marriage of our son, J. Sebastian Rajesh, with C.T.
+                Christia.”
+              </blockquote>
+
+              <div className="wedding-ceremony-heading" data-reveal>
+                <p className="wedding-detail-label">Wedding at</p>
+                <h3>The Ceremony</h3>
+              </div>
+
+              <div className="wedding-event-details" data-reveal>
+                <article className="wedding-detail-card">
+                  <CalendarDays aria-hidden="true" />
+                  <p className="wedding-detail-label">Wedding Date</p>
+                  <p className="wedding-detail-value">Sunday, 15 November 2026</p>
+                </article>
+                <article className="wedding-detail-card">
+                  <Clock3 aria-hidden="true" />
+                  <p className="wedding-detail-label">Ceremony Time</p>
+                  <p className="wedding-detail-value">10:30 AM – 11:30 AM</p>
+                </article>
+              </div>
             </div>
           </section>
 
-          <section className="countdown-section paper-section torn-section" data-reveal>
+          <section className="countdown-section paper-section torn-section" data-reveal
+          style={{
+              backgroundImage: `url(${scratchBg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}>
             <TornEdgeTop color="#641d2d" />
             <p className="eyebrow">TILL OUR BIG DAY</p>
             <h2>Countdown</h2>
@@ -965,7 +1035,7 @@ export function WeddingInvitation() {
   </div>
 
   <div className="polaroids">
-    {[slide2, laughImage, slide7].map((src, index) => (
+    {[slide2, slide5, slide7].map((src, index) => (
       <figure key={src}>
         <img
           src={src}
@@ -995,71 +1065,8 @@ export function WeddingInvitation() {
             className="events-section paper-section torn-section wedding-details-section"
           >
             <TornEdgeTop color="#641d2d" />
-            <TornEdgeBottom color="#641d2d" />
-            <div className="wedding-details-content">
-              <div className="wedding-details-heading" data-reveal>
-                <p className="eyebrow">With joyful hearts</p>
-                <h2>The Wedding Celebration</h2>
-              </div>
-
-              <div className="wedding-couple" data-reveal>
-                <div className="wedding-person">
-                  <img
-                    className="wedding-portrait"
-                    src={groomPortrait}
-                    alt="J. Sebastian Rajesh"
-                    loading="lazy"
-                  />
-                  <p className="wedding-person-label">The Groom</p>
-                  <h3>J. Sebastian Rajesh</h3>
-                  <p className="wedding-qualifications">(M.Com., IBFA)</p>
-                  <p className="wedding-parents">
-                    Mr. Joseph and Mrs. Christina Mary (A) Meena
-                  </p>
-                </div>
-                <span className="wedding-couple-ampersand" aria-hidden="true">
-                  &amp;
-                </span>
-                <div className="wedding-person">
-                  <img
-                    className="wedding-portrait"
-                    src={bridePortrait}
-                    alt="C.T. Christia"
-                    loading="lazy"
-                  />
-                  <p className="wedding-person-label">The Bride</p>
-                  <h3>C.T. Christia</h3>
-                  <p className="wedding-qualifications">(B.A., B.Ed.)</p>
-                  <p className="wedding-parents">
-                    Mr. Carmel Thangaraj and Mrs. Latha Mary (Late)
-                  </p>
-                </div>
-              </div>
-
-              <blockquote className="wedding-invitation-message" data-reveal>
-                “We cordially invite your esteemed presence and blessings with family on the
-                auspicious occasion of the marriage of our son, J. Sebastian Rajesh, with C.T.
-                Christia.”
-              </blockquote>
-
-              <div className="wedding-ceremony-heading" data-reveal>
-                <p className="wedding-detail-label">Wedding at</p>
-                <h3>The Ceremony</h3>
-              </div>
-
-              <div className="wedding-event-details" data-reveal>
-                <article className="wedding-detail-card">
-                  <CalendarDays aria-hidden="true" />
-                  <p className="wedding-detail-label">Wedding Date</p>
-                  <p className="wedding-detail-value">Sunday, 15 November 2026</p>
-                </article>
-                <article className="wedding-detail-card">
-                  <Clock3 aria-hidden="true" />
-                  <p className="wedding-detail-label">Ceremony Time</p>
-                  <p className="wedding-detail-value">10:30 AM – 11:30 AM</p>
-                </article>
-              </div>
-
+            {/* <TornEdgeBottom color="#641d2d" /> */}
+            <div>
               <div className="wedding-venues">
                 <VenueSpotlight
                   category="Wedding Ceremony"
@@ -1077,6 +1084,7 @@ export function WeddingInvitation() {
                 />
               </div>
             </div>
+            
           </section>
 
          <section
