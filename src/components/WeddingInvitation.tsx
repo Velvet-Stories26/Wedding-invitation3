@@ -18,7 +18,7 @@ import g1 from "@/assets/g1.jpeg";
 import g2 from "@/assets/g2.jpeg";
 import g3 from "@/assets/g3.jpeg";
 import g4 from "@/assets/g4.jpeg";
-import laughImage from "@/assets/memory-laugh.png";
+import laughImage from "@/assets/memory-laugh.jpeg";
 import startAnimeVideo from "@/assets/start-anime.mp4";
 import weddingAnimation from "@/assets/wedding-animation.mp4";
 import invLetterBg from "@/assets/inv-letter.png";
@@ -60,6 +60,7 @@ const slideshowImages = [
   { src: slide5, alt: "Beautiful memory 5" },
   { src: slide6, alt: "Beautiful memory 6" },
   { src: slide7, alt: "Beautiful memory 7" },
+  {src: laughImage, alt :"Beautiful memory 8"}
 ];
 
 function useCountdown() {
@@ -1082,7 +1083,7 @@ export function WeddingInvitation() {
   </div>
 
   <div className="polaroids">
-    {[slide2, slide6, slide7].map((src, index) => (
+    {[slide2, laughImage, slide7].map((src, index) => (
       <figure key={src}>
         <img
           src={src}
@@ -1100,6 +1101,7 @@ export function WeddingInvitation() {
             "the long way home",
             "the promise",
             "always laughing",
+            
           ][index]}
         </figcaption>
       </figure>
