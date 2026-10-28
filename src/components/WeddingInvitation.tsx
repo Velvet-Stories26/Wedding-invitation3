@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import {
+  ArrowUpRight,
   CalendarDays,
-  Church,
   ChevronLeft,
   ChevronRight,
   Clock3,
   Heart,
+  MapPin,
   Music2,
   Pause,
   Sparkles,
@@ -17,14 +18,19 @@ import g1 from "@/assets/g1.jpeg";
 import g2 from "@/assets/g2.jpeg";
 import g3 from "@/assets/g3.jpeg";
 import g4 from "@/assets/g4.jpeg";
-import laughImage from "@/assets/memory-laugh.png";
+import laughImage from "@/assets/memory-laugh.jpeg";
 import startAnimeVideo from "@/assets/start-anime.mp4";
 import weddingAnimation from "@/assets/wedding-animation.mp4";
 import invLetterBg from "@/assets/inv-letter.png";
+import churchImage from "@/assets/church_yerucad.png";
+import communityHallImage from "@/assets/community-hall.png";
+import groomPortrait from "@/assets/groom.png";
+import bridePortrait from "@/assets/bride.png";
 import dayImg from "@/assets/day.png";
 import monthImg from "@/assets/month.png";
 import yearImg from "@/assets/year.png";
 import scratchBg from "@/assets/scratch-bg.png";
+import silkBurgundy from "@/assets/silk-burgundy.png";
 
 import letterClosedImage from "@/assets/letter.png";
 import letterOpenImage from "@/assets/letter-open.png";
@@ -38,7 +44,7 @@ import slide5 from "@/assets/slide5.png";
 import slide6 from "@/assets/slide6.png";
 import slide7 from "@/assets/slide7.jpeg";
 
-const weddingDate = new Date("2026-10-07T11:00:00+05:30");
+const weddingDate = new Date("2026-11-15T11:00:00+05:30");
 const gallery = [
   { src: slide5, alt: "A love we imagine 1", ratio: "portrait" },
   { src: slide3, alt: "A love we imagine 2", ratio: "portrait" },
@@ -47,7 +53,8 @@ const gallery = [
 ];
 
 const slideshowImages = [
-  { src: slide1, alt: "Beautiful memory 1" },
+  { src: laughImage, alt: "A joyful moment together" },
+  // { src: churchImage, alt: "Beautiful memory 1" },
   { src: slide2, alt: "Beautiful memory 2" },
   { src: slide3, alt: "Beautiful memory 3" },
   { src: slide4, alt: "Beautiful memory 4" },
@@ -242,6 +249,49 @@ function ScratchBox({
         style={{ touchAction: "none" }}
       />
     </div>
+  );
+}
+
+function VenueSpotlight({
+  category,
+  name,
+  location,
+  image,
+  mapsQuery,
+}: {
+  category: string;
+  name: string;
+  location: string;
+  image: string;
+  mapsQuery: string;
+}) {
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`;
+
+  return (
+    <article className="wedding-venue" data-reveal>
+      <div className="wedding-venue-photo">
+        <img src={image} alt={`${name} in ${location}`} loading="lazy" />
+        <span className="wedding-venue-photo-shade" aria-hidden="true" />
+      </div>
+      <div className="wedding-venue-caption">
+        <p className="wedding-detail-label">{category}</p>
+        <h3>{name}</h3>
+        <p>{location}</p>
+      </div>
+      <a
+        className="wedding-map-link"
+        href={mapsUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Open ${name}, ${location} in Google Maps`}
+      >
+        <span className="wedding-map-cta">
+          <MapPin aria-hidden="true" />
+          View Location
+          <ArrowUpRight aria-hidden="true" />
+        </span>
+      </a>
+    </article>
   );
 }
 
@@ -473,6 +523,63 @@ export function WeddingInvitation() {
       observer.disconnect();
       window.removeEventListener("scroll", onScroll);
       clearTimeout(heroTimer);
+    };
+  }, [contentRevealed]);
+
+  useEffect(() => {
+    if (!contentRevealed) return;
+
+    const section = document.querySelector<HTMLElement>(".letter-section");
+    const background = section?.querySelector<HTMLElement>(".letter-background");
+    if (!section || !background) return;
+
+    let scrollContainer: HTMLElement | null = section.parentElement;
+    while (scrollContainer) {
+      const overflowY = window.getComputedStyle(scrollContainer).overflowY;
+      if (
+        (overflowY === "auto" || overflowY === "scroll") &&
+        scrollContainer.scrollHeight > scrollContainer.clientHeight
+      ) {
+        break;
+      }
+      scrollContainer = scrollContainer.parentElement;
+    }
+    const scrollTarget: EventTarget = scrollContainer ?? window;
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let frame = 0;
+
+    const updateBackground = () => {
+      frame = 0;
+      if (motionPreference.matches) {
+        background.style.removeProperty("--letter-parallax-y");
+        return;
+      }
+
+      const bounds = section.getBoundingClientRect();
+      const distanceFromCenter =
+        window.innerHeight / 2 - (bounds.top + bounds.height / 2);
+      const progress = Math.max(
+        -1,
+        Math.min(1, distanceFromCenter / (window.innerHeight + bounds.height)),
+      );
+      background.style.setProperty("--letter-parallax-y", `${progress * 24}px`);
+    };
+
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateBackground);
+    };
+
+    scheduleUpdate();
+    scrollTarget.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    motionPreference.addEventListener("change", scheduleUpdate);
+
+    return () => {
+      scrollTarget.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      motionPreference.removeEventListener("change", scheduleUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+      background.style.removeProperty("--letter-parallax-y");
     };
   }, [contentRevealed]);
 
@@ -738,13 +845,13 @@ export function WeddingInvitation() {
               </svg>
               <ScratchBox
                 label="Day"
-                value="07"
+                value="15"
                 coverImage={dayImg}
                 onReveal={() => setRevealedDates((count) => count + 1)}
               />
               <ScratchBox
                 label="Month"
-                value="OCT"
+                value="NOV"
                 coverImage={monthImg}
                 onReveal={() => setRevealedDates((count) => count + 1)}
               />
@@ -761,17 +868,17 @@ export function WeddingInvitation() {
                   ✦ ✧ ✦
                 </div>
                 <strong>Our forever begins</strong>
-                <span className="celebration-date">07 October 2026</span>
+                <span className="celebration-date">15 November 2026</span>
               </div>
             )}
           </section>
 
           <section
-            className="invitation-band"
+            className=" paper-section torn-section wedding-details-section"
             data-reveal
-            style={{ backgroundImage: `url(${invLetterBg})` }}
+            // style={{ backgroundImage: `url(${invLetterBg})` }}
           >
-            <div className="formal-card">
+            {/* <div className="formal-card">
               <p className="eyebrow">
                 YOU ARE INVITED TO THE
                 <br />
@@ -805,10 +912,80 @@ export function WeddingInvitation() {
 
               <strong className="card-event-date">WEDNESDAY · 07 OCTOBER · 2026</strong>
               <span className="card-event-venue">St.John of the Cross Church</span>
+            </div> */}
+            <div className="wedding-details-content">
+              <div className="wedding-details-heading" data-reveal>
+                <p className="eyebrow">With joyful hearts</p>
+                <h2>The Wedding Celebration</h2>
+              </div>
+
+              <div className="wedding-couple" data-reveal>
+                <div className="wedding-person">
+                  <img
+                    className="wedding-portrait"
+                    src={groomPortrait}
+                    alt="J. Sebastian Rajesh"
+                    loading="lazy"
+                  />
+                  <p className="wedding-person-label">The Groom</p>
+                  <h3>J. Sebastian Rajesh</h3>
+                  <p className="wedding-qualifications">(M.Com., IBFA)</p>
+                  <p className="wedding-parents">
+                    Mr. Joseph and Mrs. Christina Mary (A) Meena
+                  </p>
+                </div>
+                <span className="wedding-couple-ampersand" aria-hidden="true">
+                  &amp;
+                </span>
+                <div className="wedding-person">
+                  <img
+                    className="wedding-portrait"
+                    src={bridePortrait}
+                    alt="C.T. Christia"
+                    loading="lazy"
+                  />
+                  <p className="wedding-person-label">The Bride</p>
+                  <h3>C.T. Christia</h3>
+                  <p className="wedding-qualifications">(B.A., B.Ed.)</p>
+                  <p className="wedding-parents">
+                    Mr. Carmel Thangaraj and Mrs. Latha Mary (Late)
+                  </p>
+                </div>
+              </div>
+
+              <blockquote className="wedding-invitation-message" data-reveal>
+                “We cordially invite your esteemed presence and blessings with family on the
+                auspicious occasion of the marriage of our son, J. Sebastian Rajesh, with C.T.
+                Christia.”
+              </blockquote>
+
+              <div className="wedding-ceremony-heading" data-reveal>
+                <p className="wedding-detail-label">Wedding at</p>
+                <h3>The Ceremony</h3>
+              </div>
+
+              <div className="wedding-event-details" data-reveal>
+                <article className="wedding-detail-card">
+                  <CalendarDays aria-hidden="true" />
+                  <p className="wedding-detail-label">Wedding Date</p>
+                  <p className="wedding-detail-value">Sunday, 15 November 2026</p>
+                </article>
+                <article className="wedding-detail-card">
+                  <Clock3 aria-hidden="true" />
+                  <p className="wedding-detail-label">Ceremony Time</p>
+                  <p className="wedding-detail-value">10:30 AM – 11:30 AM</p>
+                </article>
+              </div>
             </div>
           </section>
 
-          <section className="countdown-section paper-section torn-section" data-reveal>
+          <section className="countdown-section paper-section torn-section" data-reveal
+          style={{
+              backgroundImage: `url(${scratchBg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}>
             <TornEdgeTop color="#641d2d" />
             <p className="eyebrow">TILL OUR BIG DAY</p>
             <h2>Countdown</h2>
@@ -922,8 +1099,9 @@ export function WeddingInvitation() {
         <figcaption>
           {[
             "the long way home",
-            "always laughing",
             "the promise",
+            "always laughing",
+            
           ][index]}
         </figcaption>
       </figure>
@@ -933,110 +1111,59 @@ export function WeddingInvitation() {
 
           <section
             id="events"
-            className="events-section paper-section torn-section wedding-details-section"
+            className="events-section paper-section torn-section "
           >
             <TornEdgeTop color="#641d2d" />
-            <TornEdgeBottom color="#641d2d" />
-            <div className="wedding-details-content">
-              <div className="wedding-details-heading" data-reveal>
-                <p className="eyebrow">With joyful hearts</p>
-                <h2>The Wedding Celebration</h2>
-              </div>
-
-              <div className="wedding-couple" data-reveal>
-                <div className="wedding-person">
-                  <p className="wedding-person-label">The Groom</p>
-                  <h3>J. Sebastian Rajesh</h3>
-                  <p className="wedding-qualifications">(M.Com., IBFA)</p>
-                  <p className="wedding-parents">
-                    Mr. Joseph and Mrs. Christina Mary (A) Meena
-                  </p>
-                </div>
-                <span className="wedding-couple-ampersand" aria-hidden="true">
-                  &amp;
-                </span>
-                <div className="wedding-person">
-                  <p className="wedding-person-label">The Bride</p>
-                  <h3>C.T. Christia</h3>
-                  <p className="wedding-qualifications">(B.A., B.Ed.)</p>
-                  <p className="wedding-parents">
-                    Mr. Carmel Thangaraj and Mrs. Latha Mary (Late)
-                  </p>
-                </div>
-              </div>
-
-              <blockquote className="wedding-invitation-message" data-reveal>
-                “We cordially invite your esteemed presence and blessings with family on the
-                auspicious occasion of the marriage of our son, J. Sebastian Rajesh, with C.T.
-                Christia.”
-              </blockquote>
-
-              <div className="wedding-event-details" data-reveal>
-                <article className="wedding-detail-card">
-                  <CalendarDays aria-hidden="true" />
-                  <p className="wedding-detail-label">Wedding Date</p>
-                  <p className="wedding-detail-value">Sunday, 15 November 2026</p>
-                </article>
-                <article className="wedding-detail-card">
-                  <Church aria-hidden="true" />
-                  <p className="wedding-detail-label">Church</p>
-                  <p className="wedding-detail-value">Sacred Heart Church, Yercaud</p>
-                </article>
-                <article className="wedding-detail-card">
-                  <Clock3 aria-hidden="true" />
-                  <p className="wedding-detail-label">Ceremony Time</p>
-                  <p className="wedding-detail-value">10:30 AM – 11:30 AM</p>
-                </article>
-              </div>
-
-              <div className="wedding-reception" data-reveal>
-                <p className="wedding-detail-label">Reception</p>
-                <h3>Sacred Heart Church Community Hall</h3>
-                <p>Yercaud</p>
+            {/* <TornEdgeBottom color="#641d2d" /> */}
+            <div>
+              <div className="wedding-venues">
+                <VenueSpotlight
+                  category="Wedding Ceremony"
+                  name="Sacred Heart Church"
+                  location="Yercaud, Salem District, Tamil Nadu, India"
+                  image={churchImage}
+                  mapsQuery="Sacred Heart Church, Yercaud"
+                />
+                <VenueSpotlight
+                  category="Wedding Reception"
+                  name="Sacred Heart Church Community Hall"
+                  location="Yercaud, Salem District, Tamil Nadu, India"
+                  image={communityHallImage}
+                  mapsQuery="Sacred Heart Church Community Hall, Yercaud"
+                />
               </div>
             </div>
+            
           </section>
 
-          <section className={`letter-section torn-section ${letterOpen ? "is-open" : ""}`}>
-            <TornEdgeTop color="#641d2d" />
-            <TornEdgeBottom color="#641d2d" />
-            <div className="letter-header" data-reveal>
-              <p className="eyebrow">A little note for you</p>
-              <h2>Words From Our Hearts</h2>
-            </div>
-
-            <div className={`image-letter-wrapper ${letterOpen ? "is-open" : ""}`} data-reveal>
-              {/* Closed envelope image */}
-              <div className="letter-closed-img">
-                <img
-                  src={letterClosedImage}
-                  alt="Sealed love letter envelope"
-                  width={1400}
-                  height={800}
-                />
-                {!letterOpen && (
-                  <button
-                    className="letter-img-seal"
-                    onClick={() => setLetterOpen(true)}
-                    aria-label="Open our love letter"
-                    title="Click seal to open letter"
-                  />
-                )}
+         <section
+            className="letter-section"
+          >
+            <div
+              className="letter-background"
+              aria-hidden="true"
+              style={{
+                backgroundImage: `linear-gradient(rgba(32, 0, 8, 0.24), rgba(32, 0, 8, 0.24)), url(${silkBurgundy})`,
+              }}
+            />
+            <div className="letter-wish" data-reveal>
+              <h2 className="letter-wish-opening">Two hearts, one beautiful journey </h2>
+              <div className="letter-wish-ornament" aria-hidden="true">
+                <span />
+                <Heart size={15} strokeWidth={1.5} fill="currentColor" />
+                <span />
               </div>
-
-              {/* Open envelope image */}
-              <div
-                className="letter-open-img"
-                onClick={() => setLetterOpen(false)}
-                title="Click to close letter"
-              >
-                <img
-                  src={letterOpenImage}
-                  alt="Opened love letter with heartfelt message"
-                  width={1500}
-                  height={1500}
-                />
-              </div>
+              <p className="letter-wish-message">
+                May God bless your love with endless happiness,
+                <br />
+                your home with peace, and your forever with
+                <br />
+                beautiful memories and unbreakable love.
+              </p>
+              <div className="letter-wish-divider" aria-hidden="true" />
+              <p className="letter-wish-closing">
+                <strong>With love &amp; blessings, Always.</strong>
+              </p>
             </div>
           </section>
 
@@ -1057,8 +1184,10 @@ export function WeddingInvitation() {
                 <br />
                 <em>Forever Begins...</em>
               </h2>
-              <p>07 · 10 · 2026</p>
-              <span className="final-names">J. Sebastian Rajesh &amp; C.T. Christia</span>
+              <p>15 · 11 · 2026</p>
+              <span className="final-names">J. Sebastian Rajesh </span>
+              <span>&amp; </span>
+              <span>C.T. Christia</span>
               {/* <div className="final-btn-wrap">
                 <button className="end-popup-trigger" onClick={() => setShowEndPopup(true)}>
                   <Sparkles size={12} />
