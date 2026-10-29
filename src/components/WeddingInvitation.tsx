@@ -34,7 +34,7 @@ import silkBurgundy from "@/assets/silk-burgundy.png";
 
 import letterClosedImage from "@/assets/letter.png";
 import letterOpenImage from "@/assets/letter-open.png";
-import musicFile from "@/assets/music.mp3";
+import musicFile from "@/assets/music.mpeg";
 
 import slide1 from "@/assets/slide1.png";
 import slide2 from "@/assets/slide2.jpeg";
