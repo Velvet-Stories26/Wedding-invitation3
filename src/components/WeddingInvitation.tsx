@@ -803,7 +803,7 @@ export function WeddingInvitation() {
             <div className="hero-copy" data-reveal>
               <p className="hero-subheading">WE ARE GETTING MARRIED</p>
               <h1 className="hero-names">
-                <span className="script-title">J. Sebastian </span>
+                <span className="script-title">J. Sebastion Rajesh</span>
                 <span className="hero-amp">&amp;</span>
                 <span className="script-title">C.T. Christia</span>
               </h1>
@@ -924,11 +924,11 @@ export function WeddingInvitation() {
                   <img
                     className="wedding-portrait"
                     src={groomPortrait}
-                    alt="J. Sebastian Rajesh"
+                    alt="J. Sebastion Rajesh"
                     loading="lazy"
                   />
                   <p className="wedding-person-label">The Groom</p>
-                  <h3>J. Sebastian Rajesh</h3>
+                  <h3>J. Sebastion Rajesh</h3>
                   <p className="wedding-qualifications">(M.Com., IBFA)</p>
                   <p className="wedding-parents">
                     Mr. Joseph and Mrs. Christina Mary (A) Meena
@@ -955,7 +955,7 @@ export function WeddingInvitation() {
 
               <blockquote className="wedding-invitation-message" data-reveal>
                 “We cordially invite your esteemed presence and blessings with family on the
-                auspicious occasion of the marriage of our son, J. Sebastian Rajesh, with C.T.
+                auspicious occasion of the marriage of our son, J. Sebastion Rajesh, with C.T.
                 Christia.”
               </blockquote>
 
@@ -1178,7 +1178,7 @@ export function WeddingInvitation() {
           <section className="final-section">
             <img
               src={laughImage}
-              alt="J. Sebastian Rajesh and C.T. Christia laughing together at dusk"
+              alt="J. Sebastion Rajesh and C.T. Christia laughing together at dusk"
               width={1280}
               height={912}
               loading="lazy"
@@ -1193,7 +1193,7 @@ export function WeddingInvitation() {
                 <em>Forever Begins...</em>
               </h2>
               <p>15 · 11 · 2026</p>
-              <span className="final-names">J. Sebastian Rajesh </span>
+              <span className="final-names">J. Sebastion Rajesh </span>
               <span>&amp; </span>
               <span>C.T. Christia</span>
               {/* <div className="final-btn-wrap">
