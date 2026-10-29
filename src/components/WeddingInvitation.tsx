@@ -43,6 +43,8 @@ import slide4 from "@/assets/slide4.png";
 import slide5 from "@/assets/slide5.png";
 import slide6 from "@/assets/slide6.png";
 import slide7 from "@/assets/slide7.jpeg";
+import slide8 from "@/assets/slide8.jpeg";
+
 
 const weddingDate = new Date("2026-11-15T11:00:00+05:30");
 const gallery = [
@@ -61,6 +63,7 @@ const slideshowImages = [
   { src: slide5, alt: "Beautiful memory 5" },
   { src: slide6, alt: "Beautiful memory 6" },
   { src: slide7, alt: "Beautiful memory 7" },
+  { src: slide8, alt: "Beautiful memory 8" }, 
 ];
 
 function useCountdown() {
