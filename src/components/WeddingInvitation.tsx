@@ -554,6 +554,7 @@ export function WeddingInvitation() {
     const updateBackground = () => {
       frame = 0;
       if (motionPreference.matches) {
+        background.style.removeProperty("--letter-parallax-x");
         background.style.removeProperty("--letter-parallax-y");
         return;
       }
@@ -565,7 +566,13 @@ export function WeddingInvitation() {
         -1,
         Math.min(1, distanceFromCenter / (window.innerHeight + bounds.height)),
       );
-      background.style.setProperty("--letter-parallax-y", `${progress * 24}px`);
+      const phase = progress * Math.PI;
+      const isNarrowScreen = window.innerWidth < 600;
+      const horizontalWave = Math.sin(phase) * (isNarrowScreen ? 1.5 : 3);
+      const verticalWave = Math.sin(phase * 2) * (isNarrowScreen ? 2 : 3);
+      const verticalParallax = progress * (isNarrowScreen ? 10 : 16);
+      background.style.setProperty("--letter-parallax-x", `${horizontalWave}px`);
+      background.style.setProperty("--letter-parallax-y", `${verticalParallax + verticalWave}px`);
     };
 
     const scheduleUpdate = () => {
@@ -582,6 +589,7 @@ export function WeddingInvitation() {
       window.removeEventListener("resize", scheduleUpdate);
       motionPreference.removeEventListener("change", scheduleUpdate);
       if (frame) window.cancelAnimationFrame(frame);
+      background.style.removeProperty("--letter-parallax-x");
       background.style.removeProperty("--letter-parallax-y");
     };
   }, [contentRevealed]);
