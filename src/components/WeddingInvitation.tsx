@@ -933,6 +933,8 @@ export function WeddingInvitation() {
                   <p className="wedding-person-label">The Groom</p>
                   <h3>J. Sebastion Rajesh</h3>
                   <p className="wedding-qualifications">(M.Com., IBFA)</p>
+                 <p className="my-[0.35rem] -mt-4 text-[#f7f1e7] text-[1.5rem] leading-[1.4] italic font-['Cormorant_Garamond']">Accountant</p>
+
                   <p className="wedding-parents">
                     Mr. Joseph and Mrs. Christina Mary (A) Meena
                   </p>
@@ -950,6 +952,7 @@ export function WeddingInvitation() {
                   <p className="wedding-person-label">The Bride</p>
                   <h3>C.T. Christia</h3>
                   <p className="wedding-qualifications">(B.A., B.Ed.)</p>
+                   <p className="my-[0.35rem] -mt-4 text-[#f7f1e7] text-[1.5rem] leading-[1.4] italic font-['Cormorant_Garamond']">Teacher</p>
                   <p className="wedding-parents">
                     Mr. Carmel Thangaraj and Mrs. Latha Mary (Late)
                   </p>
