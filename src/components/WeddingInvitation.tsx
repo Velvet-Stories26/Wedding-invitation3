@@ -814,7 +814,7 @@ export function WeddingInvitation() {
             <div className="hero-copy" data-reveal>
               <p className="hero-subheading">WE ARE GETTING MARRIED</p>
               <h1 className="hero-names">
-                <span className="script-title">J. Sebastion Rajesh</span>
+                <span className="script-title">J. Sebastion </span>
                 <span className="hero-amp">&amp;</span>
                 <span className="script-title">C.T. Christia</span>
               </h1>
