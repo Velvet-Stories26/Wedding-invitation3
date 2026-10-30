@@ -1083,10 +1083,10 @@ export function WeddingInvitation() {
           </section> */}
 
           <section className="polaroid-section">
-  <div data-reveal>
-    <p className="eyebrow">Through our eyes</p>
-              <h2>A Love We Imagine</h2>
-  </div>
+
+    <h2 className="text-[clamp(1.8rem,7vw,3.5rem)] leading-none font-normal">Through our eyes</h2>
+              <h2 className="text-[clamp(1.8rem,7vw,3.5rem)] leading-none font-normal">A Love We Imagine</h2>
+
 
   <div className="polaroids">
     {[slide2, laughImage, slide7].map((src, index) => (
